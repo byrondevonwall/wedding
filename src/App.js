@@ -87,7 +87,7 @@ const CollapsibleToggle = styled.button`
   cursor: pointer;
   opacity: ${ p => p.active ? .8 : .5 };
   padding: 4px 8px 4px 0;
-  transition: all 300ms ease-in-out;
+  transition: opacity 300ms ease-in-out;
   font-size: 1.1em;
   font-weight: lighter;
   &:hover{
@@ -116,7 +116,7 @@ const CollapsibleLink = styled.a`
   text-decoration: none;
   color: #fff;
   opacity: .7;
-  transition: all 300ms ease-in-out;
+  transition: opacity 300ms ease-in-out;
   &:hover{
     opacity: 1;
   }
