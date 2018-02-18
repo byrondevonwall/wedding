@@ -248,7 +248,7 @@ class App extends PureComponent {
             active={this.state.registry}
           >
             <CollapsibleLink
-              href='https://www.potterybarn.com/registry/7xxqnwqgfn/registry-list.html'
+              href='https://www.williams-sonoma.com/registry/nct2vzmc9c/registry-list.html'
               target="_blank"
             >
               Williams Sonoma
