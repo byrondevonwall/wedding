@@ -2,6 +2,19 @@ import React, { PureComponent } from 'react';
 import styled from 'styled-components';
 import HeroImage from './website-hero.jpg';
 
+const BGImg = styled.div`
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-image: url(${HeroImage});
+  background-size: cover;
+  background-clip: border-box;
+  background-repeat: no-repeat;
+  box-sizing: border-box;
+`;
+
 const Main = styled.main`
   display: flex;
   flex: 0 1 auto;
@@ -11,10 +24,10 @@ const Main = styled.main`
   height: 100vh;
   width: 100vw;
   color: #fff;
-  background-image: url(${HeroImage});
+  ${'' /* background-image: url(${HeroImage});
   background-size: cover;
   background-clip: border-box;
-  background-repeat: no-repeat;
+  background-repeat: no-repeat; */}
   box-sizing: border-box;
   padding: 32px;
   @media screen and (max-width: 760px) {
@@ -159,108 +172,20 @@ class App extends PureComponent {
 
   render() {
     return (
-      <Main>
-        <Header>
-          <DateContainer>6/16/18</DateContainer>
-          <Location>Durham, NC</Location>
-        </Header>
-        <CollapsibleWrap>
-          <CollapsibleToggle
-            active={this.state.eventInfo}
-            onClick={this.handleToggle}
-            name='eventInfo'
-          >
-            Venue and event
-            {this.state.eventInfo ?
-              <ToggleIndicator>
-                &#9650;
-              </ToggleIndicator>
-              :
-              <ToggleIndicator>
-                &#9660;
-              </ToggleIndicator>
-            }
-          </CollapsibleToggle>
-          <CollapsibleBody
-            active={this.state.eventInfo}
-          >
-            <CollapsibleLink
-              href='http://www.rickhousedurham.com/'
-              target='_blank'
+      <BGImg>
+        <Main>
+          <Header>
+            <DateContainer>6/16/18</DateContainer>
+            <Location>Durham, NC</Location>
+          </Header>
+          <CollapsibleWrap>
+            <CollapsibleToggle
+              active={this.state.eventInfo}
+              onClick={this.handleToggle}
+              name='eventInfo'
             >
-              The Rickhouse
-            </CollapsibleLink>
-            <CollapsibleLinkInfo>
-              Ceremony at 5:30pm - Reception to follow
-            </CollapsibleLinkInfo>
-            <ParkingLink
-              href='https://drive.google.com/open?id=1zv0Fzsp7PAcX4ENmZJJWIBERNhqPbKpy'
-              target='_blank'
-            >
-              Parking Information
-            </ParkingLink>
-          </CollapsibleBody>
-        </CollapsibleWrap>
-        <CollapsibleWrap>
-          <CollapsibleToggle
-            active={this.state.hotels}
-            onClick={this.handleToggle}
-            name='hotels'
-          >
-            Hotels and things to do
-            {this.state.hotels ?
-              <ToggleIndicator>
-                &#9650;
-              </ToggleIndicator>
-              :
-              <ToggleIndicator>
-                &#9660;
-              </ToggleIndicator>
-            }
-          </CollapsibleToggle>
-          <CollapsibleBody
-            active={this.state.hotels}
-          >
-            <CollapsibleLink
-              href='https://thedurham.com/'
-              target='_blank'
-            >
-              The Durham Hotel
-            </CollapsibleLink>
-            <CollapsibleLink
-              href='https://www.21cmuseumhotels.com/durham/'
-              target='_blank'
-            >
-              21c 'Museum Hotel'
-            </CollapsibleLink>
-            <CollapsibleLink
-              href='http://www.unscriptedhotels.com/'
-              target='_blank'
-            >
-              Unscripted Hotel
-            </CollapsibleLink>
-            <CollapsibleLink
-              href='http://www.marriott.com/hotels/travel/rducv-durham-marriott-city-center/'
-              target='_blank'
-            >
-              Marriott Downtown Durham
-            </CollapsibleLink>
-            <CollapsibleLink
-              href='https://drive.google.com/open?id=1sWT54e1Quy-az5NM5DVJ4S7LNi0Sl0CIlBKmfN75oJI'
-              target='_blank'
-            >
-              Things to do (google doc)
-            </CollapsibleLink>
-          </CollapsibleBody>
-        </CollapsibleWrap>
-        <CollapsibleWrap>
-          <CollapsibleToggle
-            active={this.state.registry}
-            onClick={this.handleToggle}
-            name='registry'
-          >
-            See where we're registered
-              {this.state.registry ?
+              Venue and event
+              {this.state.eventInfo ?
                 <ToggleIndicator>
                   &#9650;
                 </ToggleIndicator>
@@ -269,31 +194,121 @@ class App extends PureComponent {
                   &#9660;
                 </ToggleIndicator>
               }
-          </CollapsibleToggle>
-          <CollapsibleBody
-            active={this.state.registry}
-          >
-            <CollapsibleLink
-              href='https://www.williams-sonoma.com/registry/nct2vzmc9c/registry-list.html'
-              target="_blank"
+            </CollapsibleToggle>
+            <CollapsibleBody
+              active={this.state.eventInfo}
             >
-              Williams Sonoma
-            </CollapsibleLink>
-            <CollapsibleLink
-              href='https://www.crateandbarrel.com/gift-registry/emma-refvem-and-byron-wall/r5761521'
-              target="_blank"
+              <CollapsibleLink
+                href='http://www.rickhousedurham.com/'
+                target='_blank'
+              >
+                The Rickhouse
+              </CollapsibleLink>
+              <CollapsibleLinkInfo>
+                Ceremony at 5:30pm - Reception to follow
+              </CollapsibleLinkInfo>
+              <ParkingLink
+                href='https://drive.google.com/open?id=1zv0Fzsp7PAcX4ENmZJJWIBERNhqPbKpy'
+                target='_blank'
+              >
+                Parking Information
+              </ParkingLink>
+            </CollapsibleBody>
+          </CollapsibleWrap>
+          <CollapsibleWrap>
+            <CollapsibleToggle
+              active={this.state.hotels}
+              onClick={this.handleToggle}
+              name='hotels'
             >
-              Crate and Barrel
-            </CollapsibleLink>
-            <CollapsibleLink
-              href='https://www.potterybarn.com/registry/7xxqnwqgfn/registry-list.html'
-              target="_blank"
+              Hotels and things to do
+              {this.state.hotels ?
+                <ToggleIndicator>
+                  &#9650;
+                </ToggleIndicator>
+                :
+                <ToggleIndicator>
+                  &#9660;
+                </ToggleIndicator>
+              }
+            </CollapsibleToggle>
+            <CollapsibleBody
+              active={this.state.hotels}
             >
-              Pottery Barn
-            </CollapsibleLink>
-          </CollapsibleBody>
-        </CollapsibleWrap>
-      </Main>
+              <CollapsibleLink
+                href='https://thedurham.com/'
+                target='_blank'
+              >
+                The Durham Hotel
+              </CollapsibleLink>
+              <CollapsibleLink
+                href='https://www.21cmuseumhotels.com/durham/'
+                target='_blank'
+              >
+                21c 'Museum Hotel'
+              </CollapsibleLink>
+              <CollapsibleLink
+                href='http://www.unscriptedhotels.com/'
+                target='_blank'
+              >
+                Unscripted Hotel
+              </CollapsibleLink>
+              <CollapsibleLink
+                href='http://www.marriott.com/hotels/travel/rducv-durham-marriott-city-center/'
+                target='_blank'
+              >
+                Marriott Downtown Durham
+              </CollapsibleLink>
+              <CollapsibleLink
+                href='https://drive.google.com/open?id=1sWT54e1Quy-az5NM5DVJ4S7LNi0Sl0CIlBKmfN75oJI'
+                target='_blank'
+              >
+                Things to do (google doc)
+              </CollapsibleLink>
+            </CollapsibleBody>
+          </CollapsibleWrap>
+          <CollapsibleWrap>
+            <CollapsibleToggle
+              active={this.state.registry}
+              onClick={this.handleToggle}
+              name='registry'
+            >
+              See where we're registered
+                {this.state.registry ?
+                  <ToggleIndicator>
+                    &#9650;
+                  </ToggleIndicator>
+                  :
+                  <ToggleIndicator>
+                    &#9660;
+                  </ToggleIndicator>
+                }
+            </CollapsibleToggle>
+            <CollapsibleBody
+              active={this.state.registry}
+            >
+              <CollapsibleLink
+                href='https://www.williams-sonoma.com/registry/nct2vzmc9c/registry-list.html'
+                target="_blank"
+              >
+                Williams Sonoma
+              </CollapsibleLink>
+              <CollapsibleLink
+                href='https://www.crateandbarrel.com/gift-registry/emma-refvem-and-byron-wall/r5761521'
+                target="_blank"
+              >
+                Crate and Barrel
+              </CollapsibleLink>
+              <CollapsibleLink
+                href='https://www.potterybarn.com/registry/7xxqnwqgfn/registry-list.html'
+                target="_blank"
+              >
+                Pottery Barn
+              </CollapsibleLink>
+            </CollapsibleBody>
+          </CollapsibleWrap>
+        </Main>
+      </BGImg>
     );
   }
 }
