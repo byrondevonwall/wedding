@@ -90,6 +90,8 @@ const CollapsibleToggle = styled.button`
   transition: opacity 300ms ease-in-out;
   font-size: 1.1em;
   font-weight: lighter;
+  backface-visibility: hidden;
+  transform: translate3d(0,0,0);
   &:hover{
     opacity: .8;
   }
@@ -106,6 +108,7 @@ const CollapsibleBody = styled.div`
   justify-content: flex-start;
   width: 100%;
   padding: 0 0 0 8px;
+  transform: translate3d(0,0,0);
   @media screen and (max-width: 760px) {
     justify-content: flex-start;
   }
@@ -117,6 +120,8 @@ const CollapsibleLink = styled.a`
   color: #fff;
   opacity: .7;
   transition: opacity 300ms ease-in-out;
+  backface-visibility: hidden;
+  transform: translate3d(0,0,0);
   &:hover{
     opacity: 1;
   }
