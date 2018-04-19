@@ -127,6 +127,16 @@ const CollapsibleLink = styled.a`
   }
 `;
 
+const ParkingLink = CollapsibleLink.extend`
+  opacity: .5;
+  font-size: .75em;
+  line-height: 1.5em;
+  &:hover{
+    opacity: .75;
+  }
+`;
+
+
 const CollapsibleLinkInfo = styled.span`
   opacity: .5;
   font-size: .75em;
@@ -183,12 +193,12 @@ class App extends PureComponent {
             <CollapsibleLinkInfo>
               Ceremony at 5:30pm - Reception to follow
             </CollapsibleLinkInfo>
-            <CollapsibleLink
+            <ParkingLink
               href='https://drive.google.com/open?id=1zv0Fzsp7PAcX4ENmZJJWIBERNhqPbKpy'
               target='_blank'
             >
-              parking info
-            </CollapsibleLink>
+              Parking Information
+            </ParkingLink>
           </CollapsibleBody>
         </CollapsibleWrap>
         <CollapsibleWrap>
