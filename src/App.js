@@ -1,35 +1,27 @@
 import React, { PureComponent } from 'react';
 import styled from 'styled-components';
 import HeroImage from './website-hero.jpg';
+import measureVh from './vh-helper.js';
 
-const BGImg = styled.div`
-  position: absolute;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
+const Main = styled.main`
+  display: flex;
+  flex: 1 1 auto;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-end;
+  height: 100vh;
+  height: calc(100vh - var(--vh-diff));
+  width: 100vw;
+  color: #fff;
   background-image: url(${HeroImage});
   background-size: cover;
   background-clip: border-box;
   background-repeat: no-repeat;
   box-sizing: border-box;
-`;
-
-const Main = styled.main`
-  display: flex;
-  flex: 0 1 auto;
-  flex-direction: column;
-  justify-content: flex-start;
-  align-items: flex-end;
-  height: 100vh;
-  width: 100vw;
-  color: #fff;
-  ${'' /* background-image: url(${HeroImage});
-  background-size: cover;
-  background-clip: border-box;
-  background-repeat: no-repeat; */}
   box-sizing: border-box;
   padding: 32px;
+  transform: translate3d(0,0,0);
+  backface-visibility: hidden;
   @media screen and (max-width: 760px) {
     justify-content: flex-start;
     align-items: ;
@@ -48,6 +40,7 @@ const Header = styled.header`
   border-radius: 4px;
   padding: 40px;
   margin-bottom: 8px;
+  transform: translate3d(0,0,0);
   @media screen and (max-width: 760px) {
     justify-content: center;
     align-items: center;
@@ -64,6 +57,7 @@ const DateContainer = styled.div`
   vertical-align: middle;
   text-align: center;
   box-sizing: border-box;
+  transform: translate3d(0,0,0);
   @media screen and (max-width: 760px) {
     font-size: 2.5em;
     color: rgba(255, 255 ,255, 0.9);
@@ -72,6 +66,7 @@ const DateContainer = styled.div`
 
 const Location = styled.div`
   align-self: flex-end;
+  transform: translate3d(0,0,0);
   @media screen and (max-width: 760px) {
     color: rgba(255, 255 ,255, 0.8);
   }
@@ -86,6 +81,9 @@ const CollapsibleWrap = styled.section`
   font-size: 1em;
   font-weight: lighter;
   margin: 0 0 8px 0;
+  transform: translate3d(0,0,0);
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
   @media screen and (max-width: 760px) {
     align-self: flex-start;
   }
@@ -100,11 +98,14 @@ const CollapsibleToggle = styled.button`
   cursor: pointer;
   opacity: ${ p => p.active ? .8 : .5 };
   padding: 4px 8px 4px 0;
-  transition: opacity 300ms ease-in-out;
   font-size: 1.1em;
   font-weight: lighter;
   backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
   transform: translate3d(0,0,0);
+  -webkit-perspective: 1000;
+  transform-style: preserve-3d;
+  transition: opacity 300ms ease-in-out;
   &:hover{
     opacity: .8;
   }
@@ -113,6 +114,9 @@ const CollapsibleToggle = styled.button`
 const ToggleIndicator = styled.span`
   font-size: .5em;
   padding-left: 4px;
+  transform: translate3d(0,0,0);
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
 `;
 
 const CollapsibleBody = styled.div`
@@ -122,6 +126,8 @@ const CollapsibleBody = styled.div`
   width: 100%;
   padding: 0 0 0 8px;
   transform: translate3d(0,0,0);
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
   @media screen and (max-width: 760px) {
     justify-content: flex-start;
   }
@@ -132,9 +138,14 @@ const CollapsibleLink = styled.a`
   text-decoration: none;
   color: #fff;
   opacity: .7;
+  transform-style: preserve-3d;
   transition: opacity 300ms ease-in-out;
   backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
   transform: translate3d(0,0,0);
+  -webkit-perspective: 1000;
+  transform-style: preserve-3d;
+  transition: opacity 300ms ease-in-out;
   &:hover{
     opacity: 1;
   }
@@ -144,6 +155,8 @@ const ParkingLink = CollapsibleLink.extend`
   opacity: .5;
   font-size: .75em;
   line-height: 1.5em;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
   &:hover{
     opacity: .75;
   }
@@ -154,6 +167,9 @@ const CollapsibleLinkInfo = styled.span`
   opacity: .5;
   font-size: .75em;
   margin-top: -4px;
+  transform: translate3d(0,0,0);
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
 `;
 
 class App extends PureComponent {
@@ -164,6 +180,10 @@ class App extends PureComponent {
     registry: false,
   }
 
+  componentDidMount() {
+    measureVh();
+  }
+
   handleToggle = (e) => {
     this.setState({
       [e.target.name]: !this.state[e.target.name],
@@ -172,7 +192,6 @@ class App extends PureComponent {
 
   render() {
     return (
-      <BGImg>
         <Main>
           <Header>
             <DateContainer>6/16/18</DateContainer>
@@ -308,7 +327,6 @@ class App extends PureComponent {
             </CollapsibleBody>
           </CollapsibleWrap>
         </Main>
-      </BGImg>
     );
   }
 }
