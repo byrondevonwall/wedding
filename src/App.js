@@ -183,6 +183,12 @@ class App extends PureComponent {
             <CollapsibleLinkInfo>
               Ceremony at 5:30pm - Reception to follow
             </CollapsibleLinkInfo>
+            <CollapsibleLink
+              href='https://drive.google.com/open?id=1zv0Fzsp7PAcX4ENmZJJWIBERNhqPbKpy'
+              target='_blank'
+            >
+              parking info
+            </CollapsibleLink>
           </CollapsibleBody>
         </CollapsibleWrap>
         <CollapsibleWrap>
@@ -229,7 +235,12 @@ class App extends PureComponent {
             >
               Marriott Downtown Durham
             </CollapsibleLink>
-            <span style={{fontSize: '.7em', opacity: .5, marginTop: '4px'}}>(things to do coming soon)</span>
+            <CollapsibleLink
+              href='https://drive.google.com/open?id=1sWT54e1Quy-az5NM5DVJ4S7LNi0Sl0CIlBKmfN75oJI'
+              target='_blank'
+            >
+              Things to do (google doc)
+            </CollapsibleLink>
           </CollapsibleBody>
         </CollapsibleWrap>
         <CollapsibleWrap>
