@@ -18,10 +18,11 @@ const Main = styled.main`
   background-clip: border-box;
   background-repeat: no-repeat;
   box-sizing: border-box;
-  box-sizing: border-box;
   padding: 32px;
-  transform: translate3d(0,0,0);
+  transform: translate3d(0,0,1px);
   backface-visibility: hidden;
+  -webkit-overflow-scrolling: touch;
+  -webkit-tap-highlight-color: rgba(255, 255, 255, 0);
   @media screen and (max-width: 760px) {
     justify-content: flex-start;
     align-items: ;
@@ -106,6 +107,7 @@ const CollapsibleToggle = styled.button`
   -webkit-perspective: 1000;
   transform-style: preserve-3d;
   transition: opacity 300ms ease-in-out;
+  -webkit-tap-highlight-color: rgba(255, 255, 255, 0);
   &:hover{
     opacity: .8;
   }
